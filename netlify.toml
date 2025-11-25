@@ -1,0 +1,5 @@
+# netlify.toml
+[build]
+  command = "python -m pip install -r requirements.txt && npm run build"
+  publish = "dist"
+  environment = { PYTHON_VERSION = "3.13" }
