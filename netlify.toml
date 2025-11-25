@@ -1,5 +1,19 @@
 # netlify.toml
 [build]
+  # run apt plugin first then pip and your frontend build
   command = "python -m pip install -r requirements.txt && npm run build"
   publish = "dist"
-  environment = { PYTHON_VERSION = "3.11.4" }
+
+[[plugins]]
+  package = "netlify-plugin-apt"
+  [plugins.inputs]
+    packages = [
+      "python3-dev",
+      "build-essential",
+      "pkg-config",
+      "libcairo2-dev",
+      "libgirepository1.0-dev",
+      "libpng-dev",
+      "libffi-dev"
+    ]
+
